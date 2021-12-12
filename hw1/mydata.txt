@@ -1,0 +1,43 @@
+cooperate=data.copy()
+actors=cooperate['Actors'] #actors column
+myseries=cooperate[cooperate['Actors'].str.find('Johnny Depp')!=-1] #find data with johnny depp
+myseries=myseries['Actors'].str.split('|')
+myseries=myseries.explode()
+myseries=set(map(lambda x:x.strip(),myseries))#prevent ' Johnny Depp'
+result=myseries.copy() #direct collaborate
+former=0
+now=0
+while(1):
+    former=len(result)
+    for index, value in actors.items():
+        for actor in result:
+            if actor in value: #if the actor in result is in current row, then add into result
+                temp=value.split('|')
+                temp=set(map(lambda x:x.strip(), temp))
+                result=result.union(temp)
+                now=len(result) 
+    if now==former: #if no more data
+        break
+result.remove('Johnny Depp')
+pd.DataFrame(result,columns=['Collaborate Actors'])cooperate=data.copy()
+actors=cooperate['Actors'] #actors column
+myseries=cooperate[cooperate['Actors'].str.find('Johnny Depp')!=-1] #find data with johnny depp
+myseries=myseries['Actors'].str.split('|')
+myseries=myseries.explode()
+myseries=set(map(lambda x:x.strip(),myseries))#prevent ' Johnny Depp'
+result=myseries.copy() #direct collaborate
+former=0
+now=0
+while(1):
+    former=len(result)
+    for index, value in actors.items():
+        for actor in result:
+            if actor in value: #if the actor in result is in current row, then add into result
+                temp=value.split('|')
+                temp=set(map(lambda x:x.strip(), temp))
+                result=result.union(temp)
+                now=len(result) 
+    if now==former: #if no more data
+        break
+result.remove('Johnny Depp')
+pd.DataFrame(result,columns=['Collaborate Actors'])
